@@ -155,7 +155,7 @@ if [[ ! -z "${RADIO5G}" ]]; then
     if [[ -z "${WIFI5GSTATUS}" ]]; then
         WIFI5GSTATUS="1"
     else
-        WIFI2GSTATUS="0"
+        WIFI5GSTATUS="0"
     fi
 fi
 }
@@ -251,6 +251,8 @@ for IFNAME in $1; do
         IFSTATE=$(cat /tmp/mwan3_${IFNAME}_status)
         if [[ "${IFSTATE}" == "online" ]]; then
             VPN="connected"
+        else
+            VPN="disconnected"
         fi
         while [[ ${#IFSTATE} -lt 7 ]]; do
             IFSTATE="${IFSTATE}${SPACE}"
